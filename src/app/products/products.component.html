@@ -1,0 +1,20 @@
+<div class="product-container">
+    <div class="product-card" *ngFor="let product of filterproducts; trackBy: Trackbyproductid">
+      <img [src]="product.imageUrl" alt="Product Image" class="product-image">
+      <h3 class="product-name">{{ product.name }}</h3>
+      <p class="product-size">{{ product.size }}</p>
+      <p class="product-price">\${{ product.price }}</p>
+  
+      <div class="quantity-controls">
+        <button (click)="decreamentQuantity(product.id)" *ngIf="product.quantity != 0">-</button>
+        <span  >{{ product.quantity }}</span>
+        <button (click)="increamentQuantity(product.id)" *ngIf="product.stock > 0">+</button>
+      </div>
+  
+      <div class="action-buttons">
+        <button class="cart-button" (click)="addtocart(product)">Add to Cart</button>
+        <button class="buy-button" (click)="buynow(product)">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
